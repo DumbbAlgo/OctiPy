@@ -18,7 +18,7 @@ class ForWithoutList(NodeVisitor):
 		else:
 			self.l1.append(self.number)
 	def printfunction(self):
-		for i in self.l1:
+		for i in range(len(self.l1)):
 			print("OPTIMIZATION FOUND: For loop "+str(i)+" without any functions/list/tuple or set: the following optimization might be aplicable: Euler-Maclaurin formula")
 
 class Redundant_Functions(NodeVisitor):
@@ -54,10 +54,10 @@ class PrefixPossibility(NodeVisitor):
 		s = s.lower()
 		self.number+=1
 		if "sum" in s:
-			self.l1.append(number)
+			self.l1.append(self.number)
 	def printfunction(self):
-		for i in self.l1:
-			print("POSSIBLE_OPTIMIZATION: prefix sum might be aplicable for loop"+str(i))
+		for i in range(len(self.l1)):
+			print("POSSIBLE_OPTIMIZATION: prefix sum might be aplicable for loop"+str(i+1))
 
 class BinaryPosibility(NodeVisitor):
     def __init__(self):
@@ -68,14 +68,17 @@ class BinaryPosibility(NodeVisitor):
     	self.number+=1
     	if "id" in dir(node.func):
     		if node.func.id=='sorted':
-    			self.l1.add(number)
+    			if self.number not in self.l1:
+    				self.l1.append(self.number)
     	elif "value" in dir(node.func):
     		if node.func.value=='sort':
-    			self.l1.add(number)
+    			if self.number not in self.l1:
+    				self.l1.append(self.number)
 
     def printfunction(self):
-    	for i in self.l1:
-    		print("POSSIBLE_OPTIMIZATION: Binary Sum  some might be aplicable for sorted()/.sort()"+str(i))
+    	#print(len(self.l1))
+    	for i in  range(len(self.l1)):
+    		print("POSSIBLE_OPTIMIZATION: Binary Sum  some might be aplicable for sorted()/.sort() "+str(i+1))
 class ModularPosibility(NodeVisitor):
     def __init__(self):
     	self.number = 0
@@ -83,8 +86,8 @@ class ModularPosibility(NodeVisitor):
 
     def visit_BinOp(self, node):
     	self.number+=1
-    	if "op" in dir(node.BinOp):
-    		if node.BinOp.op=='Mod()':
+    	if "op" in dir(node):
+    		if node.op=='Mod()':
     			l1.add(self.number)
     def printfunction(self):
     	for i in self.l1:
@@ -108,6 +111,6 @@ BinaryPosibility1 =  BinaryPosibility()
 BinaryPosibility1.visit(tree)
 BinaryPosibility1.printfunction()
 
-ModularPosibility1 =  BinaryPosibility()
+ModularPosibility1 =  ModularPosibility()
 ModularPosibility1.visit(tree)
 ModularPosibility1.printfunction()
