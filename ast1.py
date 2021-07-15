@@ -14,7 +14,8 @@ class ForWithoutList(NodeVisitor):
 		s.lower()
 		#print(s)
 		if "Call" in s or "List" in s or "Tuple" in s or "Set" in s:
-			x=0
+			if len(s.split("Call"))+len(s.split("List"))+len(s.split("Tuple"))+len(s.split("Set"))>6:
+				self.l1.append(self.number)
 		else:
 			self.l1.append(self.number)
 	def printfunction(self):
@@ -70,8 +71,9 @@ class BinaryPosibility(NodeVisitor):
     		if node.func.id=='sorted':
     			if self.number not in self.l1:
     				self.l1.append(self.number)
-    	elif "value" in dir(node.func):
-    		if node.func.value=='sort':
+    	elif "attr" in dir(node.func):
+    		#print(ast.dump(node.func.attr))
+    		if node.func.attr=='sort':
     			if self.number not in self.l1:
     				self.l1.append(self.number)
 
