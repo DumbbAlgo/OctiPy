@@ -28,11 +28,11 @@ class Redundant_Functions(NodeVisitor):
         self.l2 = set()
 
     def visit_Call(self, node):
-    	try:	 
-    		name = node.func.id
-    		self.l1.add(name)
-    	except:
-    		pass
+    	if("id" in dir(node.func)):
+    		#print(node.func.id)
+    		self.l1.add(node.func.id)
+    	else:
+    		self.l1.add(node.func.attr)
 
     def visit_FunctionDef(self, node):
     	#print('no')
@@ -42,7 +42,7 @@ class Redundant_Functions(NodeVisitor):
     	#print(self.l2, self.l1)
     	x = self.l2 - self.l1
     	if len(x)>0:
-    		print("REDUNDANT FUNCTIONS FOUND:")
+    		print("REDUNDANT FUNCTIONS FOUND (NOTE: THIS FUNCTION CANNOT IDIENTIFY CALLS WITHIN ANOTHER FUNCTION THUS SOME FUNCTIONS MIGHT NOT BE REDUNDANT):")
     		print(x)
 
 class PrefixPossibility(NodeVisitor):
