@@ -13,7 +13,7 @@ class ForWithoutList(NodeVisitor):
 		self.number+=1
 		s.lower()
 		#print(s)
-		if "call" in s or "list" in s or "tuple" in s or "set" in s:
+		if "Call" in s or "List" in s or "Tuple" in s or "Set" in s:
 			x=0
 		else:
 			self.l1.append(self.number)
@@ -26,9 +26,9 @@ class Redundant_Functions(NodeVisitor):
         self.l1 = set()
         self.l2 = set()
 
-    def visit_Call(self, node):	 
-    	name = node.func.id
-    	try:
+    def visit_Call(self, node):
+    	try:	 
+    		name = node.func.id
     		self.l1.add(name)
     	except:
     		pass
@@ -114,3 +114,5 @@ BinaryPosibility1.printfunction()
 ModularPosibility1 =  ModularPosibility()
 ModularPosibility1.visit(tree)
 ModularPosibility1.printfunction()
+
+print("ENDED")
