@@ -57,7 +57,7 @@ class PrefixPossibility(NodeVisitor):
 			self.l1.append(self.number)
 	def printfunction(self):
 		for i in range(len(self.l1)):
-			print("POSSIBLE_OPTIMIZATION: prefix sum might be aplicable for loop"+str(i+1))
+			print("POSSIBLE_OPTIMIZATION: prefix sum might be aplicable for loop "+str(i+1))
 
 class BinaryPosibility(NodeVisitor):
     def __init__(self):
@@ -87,11 +87,13 @@ class ModularPosibility(NodeVisitor):
     def visit_BinOp(self, node):
     	self.number+=1
     	if "op" in dir(node):
-    		if node.op=='Mod()':
-    			l1.add(self.number)
+    		#print(str(node.op))
+    		if "Mod" in str(node.op):
+    			#print("YES")
+    			self.l1.append(self.number)
     def printfunction(self):
     	for i in self.l1:
-    		print("POSSIBLE_OPTIMIZATION: Modular Arithimetic some might be aplicable for mod operation"+str(i))
+    		print("POSSIBLE_OPTIMIZATION: Modular Arithimetic might be aplicable for mod operation "+str(i))
 path = "C:/Users/neils/Desktop/Projects/Python/Hackathon/test/test.py"
 file = open(path).read()
 tree = ast.parse(file)
