@@ -28,14 +28,14 @@ class Redundant_Functions(NodeVisitor):
 
     def visit_Call(self, node):	 
     	name = node.func.id
-    	self.l1.add(name)
-    	#self.generic_visit(node)
-
+    	try:
+    		self.l1.add(name)
+    	except:
+    		pass
 
     def visit_FunctionDef(self, node):
     	#print('no')
     	self.l2.add(node.name)
-    	#self.generic_visit(node)
 
     def printfunction(self):
     	#print(self.l2, self.l1)
