@@ -94,7 +94,8 @@ class ModularPosibility(NodeVisitor):
     def printfunction(self):
     	for i in self.l1:
     		print("POSSIBLE_OPTIMIZATION: Modular Arithimetic might be aplicable for mod operation "+str(i))
-path = "C:/Users/neils/Desktop/Projects/Python/Hackathon/test/test.py"
+#path = "C:/Users/neils/Desktop/Projects/Python/Hackathon/test/test.py"
+path = input("Write file path here, seperate with /:")
 file = open(path).read()
 tree = ast.parse(file)
 ForWithoutList1 = ForWithoutList()
