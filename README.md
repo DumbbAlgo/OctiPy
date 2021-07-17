@@ -18,6 +18,6 @@ Install the ast1.py file and input the path for the file:
 Eg. 
 path![image](https://user-images.githubusercontent.com/75718261/126033283-339f3e09-cf65-481a-8a1e-f7242dcebebe.png)
 
-###Output
+### Output
 
 ![image](https://user-images.githubusercontent.com/75718261/126033325-40b1bcde-aa26-446f-be6b-1d21aa0c4a1a.png)
