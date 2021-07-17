@@ -15,4 +15,5 @@ Given the path for the python file it gives the following optimizations:
 ### How to use
 
 Install the ast1.py file and input the path for the file:
-Eg. path![image](https://user-images.githubusercontent.com/75718261/126033283-339f3e09-cf65-481a-8a1e-f7242dcebebe.png)
+Eg. 
+path![image](https://user-images.githubusercontent.com/75718261/126033283-339f3e09-cf65-481a-8a1e-f7242dcebebe.png)
